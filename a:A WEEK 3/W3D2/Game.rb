@@ -1,9 +1,17 @@
 require_relative "Board.rb"
+require_relative "Player.rb"
+require_relative "Computer.rb"
+
 
 class Game
   def initialize
     @board = Board.new
     @board.populate
+    @player = Player.new
+    @computer = Computer.new
+    @current_player = @player
+    @known_cards = {}
+    @matched_cards = []
   end
 
   def play
@@ -11,11 +19,14 @@ class Game
     while !won
       @board.conceal
       @board.render
-      guessed_POS = make_guess
+      guessed_POS = @current_player.make_guess(@matched_cards)
+      input_revealed_card(@board.at(guessed_POS), guessed_POS)
       @board.reveal(guessed_POS)
       @board.render
       previous_guess = guessed_POS
-      guessed_POS = make_guess
+      guessed_POS = @current_player.make_guess(@matched_cards)
+      input_revealed_card(@board.at(guessed_POS), guessed_POS)
+
       @board.reveal(guessed_POS)
       @board.render
         if @board.at(guessed_POS) == @board.at(previous_guess)
@@ -31,15 +42,30 @@ class Game
           puts "please try again"
           sleep(2)
         end
+        switch_players
     end
   end
 
-  def make_guess
-    puts "User please make an input"
-    temp = gets.chomp.split(" ")
-    pos = [temp[0].to_i , temp[1].to_i]
-    return pos
+  def receive_revealed_card(token)
+    @known_cards[token]
   end
+
+  def input_revealed_card(token, pos)
+    @known_cards[token] = pos
+  end
+
+  def receive_match
+
+  end
+
+  def switch_players
+    if @current_player == @player
+      @current_player = @computer
+    else @current_player = @player
+    end
+  end
+
+  
 end
 
 
