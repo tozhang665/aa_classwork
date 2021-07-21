@@ -185,13 +185,17 @@ end
 # p subsets([]) # => [[]]
 # p subsets([1]) # => [[], [1]]
 # p subsets([1, 2]) # => [[], [1], [2], [1, 2]]
-p subsets([1, 2, 3])
-# => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+# p subsets([1, 2, 3])
+# # => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
 
 
-# p breakdown([1,2,3])
 
+def permutations(arr)
 
-# def permutations(arr)
+end
 
-# end
+def factorial(num)
+
+end
+
+p factorial(3)
