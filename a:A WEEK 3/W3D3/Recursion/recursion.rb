@@ -154,18 +154,43 @@ end
 
 
 def subsets(arr)
-    return [[]] if arr.length == 0
-    return [arr[0]] if arr.length == 1
-    tot = []
-    tot << arr[0]
-    tot << subsets(arr[1...-1])
+    if arr.length == 1
+        return [[arr[0]]]
+    end
+    if arr.length == 0
+        return [[]]
+    end
+    brokendown = breakdown(arr) #2D arr
+    portion = brokendown << arr
+    sub = [] + subsets(arr[0...-1]) + portion
+end
+
+def breakdown(arr)
+    if arr.length == 2
+        return [[arr[-1]]]
+    elsif arr.length == 1
+        return [[]]
+    elsif arr.length == 0
+        return nil
+    end
+    last = arr.length-1
+    vals = [[arr[-1]]]
+    (0...last).to_a.each do |idx| 
+        small = [arr[idx],arr[last]]
+        vals << small
+    end
+    vals
 end
 
 # p subsets([]) # => [[]]
 # p subsets([1]) # => [[], [1]]
 # p subsets([1, 2]) # => [[], [1], [2], [1, 2]]
-# p subsets([1, 2, 3])
-# # => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+p subsets([1, 2, 3])
+# => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+
+
+# p breakdown([1,2,3])
+
 
 # def permutations(arr)
 
