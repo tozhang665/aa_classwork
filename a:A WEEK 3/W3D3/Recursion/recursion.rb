@@ -40,21 +40,37 @@ end
 class Array
     def deep_dup
         dup = []
-        self.each do |smallArr|
-            section = Array.new(smallArr.length)
-            dup << section
+        self.each do |ele|
+            if ele.is_a?(Array)
+                dup << ele.deep_dup
+            else
+                dup << ele
+            end
         end
-        dup[1][1] = 10
         dup
     end
-
 end
 
-arr = [[1,2,3],[4,5,6]]
+# # arr = [[1,2,3],[4,5,6]]
+# arr = ['a', 'b', ['c']]
+# #for 'a' shovel 'a' directly into a new array
+# #for 'b' shovel 'b' directyly into same spot
+# #for index 2
+# d = arr.deep_dup
 
-d = arr.deep_dup
+# p d
 
-p d
+# robot_parts = [
+#   ["nuts", "bolts", "washers"],
+#   ["capacitors", "resistors", "inductors"]
+# ]
+
+# robot_parts_copy = robot_parts.deep_dup
+
+# # shouldn't modify robot_parts
+# p robot_parts_copy[1] << "LEDs"
+# # but it does
+# p robot_parts[1] # => ["capacitors", "resistors", "inductors", "LEDs"]
 
 
 def rec_fibonacci(n)
@@ -156,6 +172,7 @@ def subsets(arr)
     tot << arr[0]
     tot << subsets(arr[1...-1])
 end
+
 # p subsets([]) # => [[]]
 # p subsets([1]) # => [[], [1]]
 # p subsets([1, 2]) # => [[], [1], [2], [1, 2]]
