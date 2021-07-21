@@ -115,51 +115,39 @@ end
 # p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
 
 
-def sort(numbers)
-    if numbers.size <= 1
-      return numbers
-    end
-    array_size   = numbers.size
-    half_of_size = (array_size / 2).round
 
-    left_array  = numbers.take(half_of_size)
-    right_array = numbers.drop(half_of_size)
-    p "slitting up into parts"
-    p left_array
-    p right_array
-    sorted_left_array = sort(left_array)
-    sorted_right_array = sort(right_array)
-    p "this is left"
-    p sorted_left_array
-    p "this is right"
-    p sorted_right_array
-    merge(sorted_left_array, sorted_right_array)
-  end
-  # This then creates a new array, loops through the left/right arrays and places the lowest number into the array. 
-  def merge(left_array, right_array)
-    if right_array.empty?
-      return left_array # We have nothing to compare. Left wins.
+def sort(arr)
+    if arr.length == 1
+        return arr
+    end
+    half = arr.length / 2
+    left = arr.take(half)
+    right = arr.drop(half)
+    brokenLeft = sort(left)
+    brokenRight = sort(right)
+    merge(brokenLeft,brokenRight)
+end
+
+
+def merge(leftSide,rightSide)
+
+    if leftSide.empty?
+        return rightSide
+    elsif rightSide.empty?
+        return leftSide
     end
 
-    if left_array.empty?
-      return right_array # We have nothing to compare. Right wins.
-    end
-
-    smallest_number = if left_array.first <= right_array.first
-      left_array.shift
+    if rightSide[0] < leftSide[0]
+        smallest = rightSide.shift
     else
-      right_array.shift
+        smallest = leftSide.shift
     end
-
-    # We keep doing it until the left or right array is empty.
-    recursive = merge(left_array, right_array)
-
-    # Okay, either left or right array are empty at this point. So we have a result.
-    [smallest_number].concat(recursive)
-  end
+    [smallest].concat(merge(leftSide,rightSide))
+end
 
 
-# arr = [12, 11, 13, 5, 6, 7,3]
+
+# arr = [12, 11, 13, 5,7,40,1,2,3,541,23,3123,54,1231]
 
 # p sort(arr)
 
