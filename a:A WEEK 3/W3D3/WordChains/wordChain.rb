@@ -28,6 +28,10 @@ class WordChainer
         adjacent_set.delete(word)
         adjacent_set
     end
+
+    def run(source,target)
+        @current_words = [source]
+    end
 end
 
 
