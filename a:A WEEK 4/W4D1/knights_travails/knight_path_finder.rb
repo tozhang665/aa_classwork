@@ -74,9 +74,6 @@ class Knight
     end
 
     def trace_path_back(node)
-      # end_node = self.root_node.dfs(node)
-      # self.find_path(end_node)
-
       nodes = []
       current_node = node
       until current_node.nil?
