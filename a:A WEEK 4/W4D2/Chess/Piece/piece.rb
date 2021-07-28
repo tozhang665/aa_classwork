@@ -1,5 +1,5 @@
 class Piece
-    def initialize(color,board,pos)
+    def initialize(color="",board="",pos="")
         @color = color
         @board = board
         @pos = pos
@@ -18,8 +18,12 @@ class Piece
 
     end
 
-    def Symbol
+    def symbol
+        @color
+    end
 
+    def inspect
+        return self.class
     end
 
     private
