@@ -5,6 +5,7 @@ require_relative "../Piece/Play_Pieces/bishop.rb"
 require_relative "../Piece/Play_Pieces/queen.rb"
 require_relative "../Piece/Play_Pieces/king.rb"
 require_relative "../Piece/Play_Pieces/pawn.rb"
+require 'colorize'
 
 class Board
     attr_accessor :grid
@@ -24,6 +25,10 @@ class Board
                 end
             end
         end
+
+
+        #bottom left == [0,0]
+        #top right == [7,7]
         # grid <-> pieces
         @grid[0][0] = Rook.new(:black,self,[0,0])
         @grid[0][1] = Knight.new(:black,self,[0,1])
@@ -48,7 +53,13 @@ class Board
         #         @grid[rowIDX][colIDX] = Piece.new
         #     end
         # end
+        ###########WHITE############
 
+
+
+
+        ############BLACK###############
+        @grid = @grid.transpose
     end
 
     def [](pos) #[0 3] [3,0]
@@ -65,4 +76,20 @@ class Board
         # self[start_pos],self[end_pos] = self[end_pos],self[start_pos]
     end
 
+    def render
+        grid2 = @grid.transpose
+        grid2.each do |row|
+            arr = []
+            row.each do |sym|
+                if sym.color == :white
+                    print sym.symbol.colorize(:WHITE) + " "
+                elsif sym.color == :black
+                    print sym.symbol.colorize(:blue) + " "
+                else
+                    print sym.symbol.colorize(:WHITE) + " "
+                end
+            end
+            puts " "
+        end
+    end
 end

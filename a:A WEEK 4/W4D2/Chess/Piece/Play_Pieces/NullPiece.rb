@@ -5,4 +5,7 @@ class NullPiece < Piece
     def initialize(color=nil,board=nil,pos=nil)
 
     end
+    def symbol
+        return " "
+    end
 end

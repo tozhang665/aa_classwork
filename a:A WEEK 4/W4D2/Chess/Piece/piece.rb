@@ -37,11 +37,10 @@ class Piece
     end
 
     def symbol
-        @color
     end
 
     def inspect
-        return self.class
+        return self.symbol
     end
     
 

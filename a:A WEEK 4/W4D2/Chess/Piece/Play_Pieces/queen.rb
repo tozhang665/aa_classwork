@@ -3,13 +3,14 @@ require_relative "Slideable.rb"
 class Queen < Piece
     include Slideable
     def symbol
-        return "q"
+        return "Q"
     end 
 
     private
     def move_dirs
-        HORIZONATAL_DIRS + DIAGONAL_DIRS
-        
+        tot = horizontal_dirs
+        tot += diagonal_dirs
+        tot
     end
     
 end
