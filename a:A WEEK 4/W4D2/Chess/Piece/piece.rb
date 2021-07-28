@@ -1,4 +1,5 @@
 class Piece
+    attr_reader :color
     def initialize(color="",board="",pos="")
         @color = color
         @board = board
@@ -15,7 +16,6 @@ class Piece
     #             possible_pos << [i, j]
     #         end 
     #      end 
-          
     #    end
     #        return possible_pos
     end
