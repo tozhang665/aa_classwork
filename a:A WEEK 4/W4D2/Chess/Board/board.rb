@@ -64,4 +64,9 @@ class Board
 
         # self[start_pos],self[end_pos] = self[end_pos],self[start_pos]
     end
+
+    def valid_pos?(pos)
+        
+
+    end 
 end
