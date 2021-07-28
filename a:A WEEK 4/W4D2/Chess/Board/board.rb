@@ -6,6 +6,7 @@ require_relative "../Piece/Play_Pieces/queen.rb"
 require_relative "../Piece/Play_Pieces/king.rb"
 require_relative "../Piece/Play_Pieces/pawn.rb"
 require 'colorize'
+require_relative "cursor.rb"
 
 class Board
     attr_accessor :grid
