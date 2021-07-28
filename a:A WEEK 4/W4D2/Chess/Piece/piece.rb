@@ -6,18 +6,18 @@ class Piece
     end
 
     def moves 
-        possible_pos = []
-        length1 = @board.grid[0].length
-        length2 = @board.grid.length
-       (0...length1) do |i|
-         (0...length2) do |j|
-            if @board.grid[i][j].color != @color
-                possible_pos << [i, j]
-            end 
-         end 
+    #     possible_pos = []
+    #     length1 = @board.grid[0].length
+    #     length2 = @board.grid.length
+    #    (0...length1) do |i|
+    #      (0...length2) do |j|
+    #         if @board.grid[i][j].color != @color
+    #             possible_pos << [i, j]
+    #         end 
+    #      end 
           
-       end
-           return possible_pos
+    #    end
+    #        return possible_pos
     end
 
     def to_s
