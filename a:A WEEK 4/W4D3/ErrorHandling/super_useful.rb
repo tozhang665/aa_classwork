@@ -1,14 +1,21 @@
 # PHASE 2
 def convert_to_int(str)
-  Integer(str)
+  begin  
+    Integer(str)
+  rescue
+    return str
+  end 
 end
 
 # PHASE 3
 FRUITS = ["apple", "banana", "orange"]
-
+class CoffeeError < StandardError
+end 
 def reaction(maybe_fruit)
   if FRUITS.include? maybe_fruit
     puts "OMG, thanks so much for the #{maybe_fruit}!"
+  elsif maybe_fruit == "coffee"
+    raise CoffeeError
   else 
     raise StandardError 
   end 
@@ -17,9 +24,16 @@ end
 def feed_me_a_fruit
   puts "Hello, I am a friendly monster. :)"
 
+  begin
   puts "Feed me a fruit! (Enter the name of a fruit:)"
-  maybe_fruit = gets.chomp
+  maybe_fruit = gets.chomp 
   reaction(maybe_fruit) 
+  rescue CoffeeError
+    puts "Gave him coffee"
+    retry
+  rescue StandardError
+    puts "Wrong fruit and no coffee"
+  end
 end  
 
 # PHASE 4
@@ -28,6 +42,19 @@ class BestFriend
     @name = name
     @yrs_known = yrs_known
     @fav_pastime = fav_pastime
+
+    if @yrs_known < 5
+      raise "Less than 5 years known"
+    end
+
+    if @name == "" 
+      raise "name is not valid"
+    end
+
+    if @fav_pastime == ""
+      raise "fav_pastime is missing"
+    end
+
   end
 
   def talk_about_friendship
@@ -42,5 +69,6 @@ class BestFriend
     puts "Hey bestie, I made you a friendship bracelet. It says my name, #{@name}, so you never forget me." 
   end
 end
+
 
 
