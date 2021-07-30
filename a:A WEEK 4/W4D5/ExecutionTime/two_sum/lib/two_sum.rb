@@ -28,22 +28,22 @@ end
 #[0,5,7] 10
 #10 - 5 = 5
 #REDDDODOOOOOOOOOOOOOOOOOO
-def hash_two_sum?(array, val)
-    hash = Hash.new(0)
-    array.each do |ele| # n
-        hash[ele] = val - ele
-    end
-    hash.each_value do |v| #n
-        return true if hash[v] != 0 && hash[v] != v
-    end
-    false
-end
+# def hash_two_sum?(array, val)
+#     hash = Hash.new(0)
+#     array.each do |ele| # n
+#         hash[ele] = val - ele
+#     end
+#     hash.each_value do |v| #n
+#         return true if hash[v] != 0 && hash[v] != v
+#     end
+#     false
+# end
 
 def hash_two_sum?(array, val)
     seen = Hash.new
     array.each do |e|
         return true if seen.include?(e)
-        seen[e] = 
+        seen[val-e] = val
     end
     false
 end
