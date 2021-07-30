@@ -39,6 +39,7 @@ end
 #     false
 # end
 
+# O(n)
 def hash_two_sum?(array, val)
     seen = Hash.new
     array.each do |e|
