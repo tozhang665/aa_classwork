@@ -292,8 +292,7 @@ def two_sum?(array, val)
   false
 end
 
-#n^7
-#where everyone go?
+#n^4
 def four_sum?(array, val)
   return false if array.length < 4
   array.each_with_index do |ele,idx1|
