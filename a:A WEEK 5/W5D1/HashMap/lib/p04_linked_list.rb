@@ -19,14 +19,13 @@ class Node
   end
 end
 
-
 # def initialize(key = nil, val = nil)
 #     @key = key
 #     @val = val
 #     @next = nil
 #     @prev = nil
 #   end
-# attr_reader :key
+#   attr_reader :key
 #   attr_accessor :val, :next, :prev
 class LinkedList
   def initialize
@@ -42,9 +41,11 @@ class LinkedList
   end
 
   def first
+
   end
 
   def last
+    
   end
   #HEAD -> TAILS
   def empty?
@@ -58,7 +59,7 @@ class LinkedList
   end
 
   def append(key, val)
-    
+
   end
 
   def update(key, val)
