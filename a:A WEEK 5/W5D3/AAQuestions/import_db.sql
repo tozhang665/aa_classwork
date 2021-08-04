@@ -81,6 +81,12 @@ VALUES
   ((SELECT id FROM users WHERE fname = 'Nem' AND lname = 'Nguy'),
   (SELECT id FROM questions WHERE title = 'Help')),
 
+  ((SELECT id FROM users WHERE fname = 'Tony' AND lname = 'Zhang'),
+  (SELECT id FROM questions WHERE title = 'Help')),
+
+  ((SELECT id FROM users WHERE fname = 'Kent' AND lname = 'Zhang'),
+  (SELECT id FROM questions WHERE title = 'Help')),
+
   ((SELECT id FROM users WHERE fname = 'Tony' AND lname = 'Stark'),
   (SELECT id FROM questions WHERE title = 'How to solve')),
 
