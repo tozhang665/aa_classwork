@@ -10,7 +10,7 @@ GEM
     sqlite3 (1.4.2)
 
 PLATFORMS
-  x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   byebug
@@ -18,4 +18,4 @@ DEPENDENCIES
   sqlite3
 
 BUNDLED WITH
-   2.2.20
+   2.2.22
