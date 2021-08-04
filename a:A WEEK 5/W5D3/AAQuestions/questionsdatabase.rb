@@ -12,6 +12,15 @@ class QuestionsDatabase < SQLite3::Database
 end
 
 class Users
+  attr_accessor :id, :fname, :lname
+
+  def initialize(options)
+    @id = options['id']
+    @fname = options['fname']
+    @lname = options['lname']
+  end
+
+  #returns a user variable when searching ID. RETURNS NIL IF ID DOESNT EXIST
   def self.find_by_id(id)
     user = QuestionsDatabase.instance.execute(<<-SQL, id)
       SELECT
@@ -23,10 +32,22 @@ class Users
     SQL
     return nil if user.length < 1
     user
+    Users.new(user[0])
   end
 end
 
+# self.id = PlayDBConnection.instance.last_insert_row_id
+
 class Questions
+  attr_accessor :id, :title, :body, :author_id
+
+  def initialize(options)
+    @id = options['id']
+    @title = options['title']
+    @body = options['body']
+    @author_id = options['author_id']
+  end
+
   def self.find_by_id(id)
     question = QuestionsDatabase.instance.execute(<<-SQL, id)
       SELECT
@@ -37,11 +58,18 @@ class Questions
         id = ?
     SQL
     return nil if question.length < 1
-    question
+    Questions.new(question[0])
   end
 end
 
 class QuestionFollows
+  attr_accessor :id, :user_id, :question_id
+
+  def initialize(options)
+    @id = options['id']
+    @user_id = options['user_id']
+    @question_id = options['question_id']
+  end
   def self.find_by_id(id)
     question_follows = QuestionsDatabase.instance.execute(<<-SQL, id)
       SELECT
@@ -52,11 +80,20 @@ class QuestionFollows
         id = ?
     SQL
     return nil if question_follows.length < 1
-    question_follows
+    QuestionFollows.new(question_follows[0])
   end
 end
 
 class Replies
+  attr_accessor :id, :question_id, :parent_id, :user_id, :body
+  def initialize(options)
+    @id = options['id']
+    @question_id = options['question_id']
+    @parent_id = options['parent_id']
+    @user_id = options['user_id']
+    @body = options['body']
+  end
+
   def self.find_by_id(id)
     reply = QuestionsDatabase.instance.execute(<<-SQL, id)
       SELECT
@@ -67,11 +104,19 @@ class Replies
         id = ?
     SQL
     return nil if reply.length < 1
-    reply
+    Replies.new(reply[0])
   end
 end
 
 class QuestionLikes
+  attr_accessor :id, :user_id, :question_id
+
+  def initialize(options)
+    @id = options['id']
+    @user_id = options['user_id']
+    @question_id = options['question_id']
+  end
+
   def self.find_by_id(id)
     question_like = QuestionsDatabase.instance.execute(<<-SQL, id)
       SELECT
@@ -82,6 +127,6 @@ class QuestionLikes
         id = ?
     SQL
     return nil if question_like.length < 1
-    question_like
+    QuestionLikes.new(question_like[0])
   end
 end
