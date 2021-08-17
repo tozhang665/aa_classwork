@@ -17,13 +17,12 @@ class SessionsController < ApplicationController
             redirect_to cats_url
         else
             # Redirect the user to the cats index page.
-            render :new
+            redirect_to new_sessions_url
         end
-        
-
     end
 
     def destroy
-
+      logout!
+      redirect_to new_sessions_url
     end
 end

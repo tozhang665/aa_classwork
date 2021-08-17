@@ -14,7 +14,7 @@ class CatRentalRequest < ApplicationRecord
   # .freeze renders constants immutable
   STATUS_STATES = %w(APPROVED DENIED PENDING).freeze
 
-  validates :cat_id, :end_date, :start_date, :status, presence: true
+  validates :cat_id, :user_id,:end_date, :start_date, :status, presence: true
   validates :status, inclusion: STATUS_STATES
   validate :start_must_come_before_end
   validate :does_not_overlap_approved_request
@@ -163,4 +163,10 @@ class CatRentalRequest < ApplicationRecord
     errors[:start_date] << 'must come before end date'
     errors[:end_date] << 'must come after start date'
   end
+
+
+  belongs_to :user,
+  primary_key: :id,
+  foreign_key: :user_id,
+  class_name: :User
 end

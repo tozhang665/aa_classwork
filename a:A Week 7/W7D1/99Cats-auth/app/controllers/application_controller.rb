@@ -10,9 +10,11 @@ class ApplicationController < ActionController::Base
     end
 
     def require_logged_in
+      # redirect_to new_sessions_url unless logged_in?
     end
 
     def require_logged_out
+      redirect_to cats_url if logged_in?
     end
 
     def login(user)
@@ -25,5 +27,8 @@ class ApplicationController < ActionController::Base
     end
 
     def logout!
+      current_user.reset_session_token! if logged_in?
+      session[:session_token] = nil
+      @current_user = nil
     end
 end

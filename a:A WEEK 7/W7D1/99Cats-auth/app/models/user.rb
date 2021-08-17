@@ -19,6 +19,17 @@ class User < ApplicationRecord
 
   after_initialize :ensure_token_presence
 
+
+  has_many :cats,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :Cat
+
+    has_many :requests,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :CatRentalRequest
+
   #SPIRE
   #S
   def self.find_by_credentials(user_name,password)
