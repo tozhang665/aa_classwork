@@ -1,0 +1,81 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *
+ *COLORS CHOSEN
+ *DARKEST
+ *#424B54
+ *#E1CE7A
+ *#EBCFB2
+ *#C5BAAF
+ *#FFFFFF
+ *
+ *
+ */
+
+.main-logo{
+  font-size: 100px;
+  color:#424B54;
+  background-color: #E1CE7A;
+  border-radius: 50px;
+  padding: 10px;
+  width:50%;
+  height: 125px;
+  margin:auto;
+  /* display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold; */
+
+}
+ #main-body{
+  font-size: 75px;
+  margin-bottom: 30px;
+ }
+ body{
+   background-color: #424B54;
+ }
+ .content{
+   background-color: #B9C6AE;
+   color: #090C08;
+   display: block;
+   margin: auto;
+   width: 50%;
+   border-radius: 50px;
+   padding: 20px;
+ }
+
+ .header{
+
+ }
+ .footer{
+
+ }
+ a{
+   background-color: #C5BAAF;
+   border-radius: 5px;
+   padding:5px;
+   margin-bottom: 5px;
+   margin-top: 5px;
+ }
+ #logout,{
+   background-color: #C5BAAF;
+   border-radius: 5px;
+   padding:5px;
+   margin-bottom: 5px;
+   margin-top: 5px;
+ }
