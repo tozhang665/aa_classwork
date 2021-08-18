@@ -12,7 +12,7 @@ RSpec.describe UsersController, type: :controller do
   describe 'POST #create' do
     let(:user_params) do {
       user:{
-        username: 'tony'
+        username: 'tony',
         password: 'password'
       }
     }
@@ -24,9 +24,18 @@ RSpec.describe UsersController, type: :controller do
         expect(session[:session_token]).to eq(user.session_token)
       end
 
+      it 'redirects to the users show page' do
+        post :create, params: user_params
+        user = User.find_by(username: 'tony')
+        expect(response).to redirect_to(user_url(user))
+      end
     end
+
     context 'with invalid params' do
-      
+      it 'validates the presence of username and password' do
+        post :create, params: {user: {username: '', password: ''}}
+        expect(response).to render_template(:new)
+      end
 
     end
 
