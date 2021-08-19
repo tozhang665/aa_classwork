@@ -1,0 +1,26 @@
+.sections {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	border-bottom: 2px solid $light-gray;
+	position: relative;
+	justify-content: center;
+}
+
+.sections_ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.sections_ul > li {
+    margin: 5px 5px;
+}
+
+.sections_ul > li > section:hover {
+    background-color: $light-gray;
+}
+
+.sections_ul > li > a{
+    text-decoration: underline;
+}

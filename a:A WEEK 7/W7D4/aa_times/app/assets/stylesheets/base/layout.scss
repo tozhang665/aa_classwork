@@ -10,8 +10,7 @@ body {
   width: 80%;
   margin:0 auto;
   font-family: $serif;
-  // font-size: 12px;
-  font-size: 20px;
+  font-size: 12px;
 }
 
 button {
@@ -24,7 +23,7 @@ button {
 	transition: 2s;
 	font-family:$sans-serif;
 	text-transform:uppercase;
-	font-size:20px;
+	font-size:12px;
 	text-align:center;
 }
 
@@ -51,4 +50,8 @@ hr {
 .hr-top {
 	height: 2px;
 	margin-bottom: 1px;
+}
+
+a {
+	text-decoration: underline;
 }

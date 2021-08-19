@@ -4,10 +4,17 @@
 	align-items: center;
 	border-bottom: 2px solid black;
 	position: relative;
+	justify-content: center;
+}
+
+.language-nav > ul > li:first-child {
+	font-weight: bold;
 }
 
 .language-nav {
 	position: absolute;
+	display: flex;
+	flex-direction: row;
 	top: -15px;
 	left: calc(50% - (177.78px/2));
 	background: white;
@@ -34,6 +41,11 @@
 	margin-top: 10px;
 }
 
+.links {
+	display: flex;
+	flex-direction: row;
+}
+
 .masthead-links {
 	display: flex;
 	font-family: $sans-serif;
@@ -43,7 +55,7 @@
 
 	li {
 		margin-left: 10px;
-		border-right: 1px solid $light-gray;
+		border-right: 1px solid black;
 	}
 
 	button {
@@ -71,4 +83,8 @@
 	strong {
 		color: green;
 	}
+}
+
+.links > li:last-child{
+	border-right: none;
 }
