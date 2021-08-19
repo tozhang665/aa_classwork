@@ -1,0 +1,71 @@
+/* PHASE 1: Header */
+body{
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  background: #FFFBDB;
+}
+header{
+  background: #f00;
+  color:#fff;
+  border-bottom:1px solid #ccc;
+  display: block;
+  position:relative;
+  height:30px;
+}
+.header-nav{
+  display:flex;
+  justify-content:space-around;
+}
+nav{
+  display: block;  
+}
+/* .header-logo{
+  /* display:flex; */
+  /* justify-content: flex-end;
+} */
+a{
+  color:#fff;
+  margin:5px;
+  padding:10px;
+  padding-top:10px;
+  border-left:1px solid white;
+  border-right:1px solid white;
+}
+a:hover{
+  background-color: black;
+}
+.header-list{
+  display:flex;
+  flex-direction: row;
+}
+.header-list > li{
+  margin-left:10px;
+  border-style: solid;
+  border-right:5px;
+  border-color: red;
+  z-index: 10;
+  margin:5px;
+}
+
+
+#dropdown-items{
+  display:none;
+}
+.dropdown:hover{
+  margin:5px;
+}
+.dropdown:hover #dropdown-items{
+  display:block;
+  color:black;
+  background-color: white;
+  position:fixed;
+}
+.dropdown:hover #dropdown-items > li{
+  color:black;
+  border:1px solid black;
+}
+.non-drop{
+  display: flex;
+  flex-direction: row;
+}
