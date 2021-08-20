@@ -23,9 +23,19 @@ class PostsController < ApplicationController
     end
 
     def edit
+        @post = Post.find_by(id: params[:id])
+        render :edit
     end
 
     def update
+        @post = Post.find_by(id: params[:id])
+        if @post && @post.user_id == current_user.id
+            @post.update(post_params)
+            redirect_to post_url(@post.id)
+        else
+            flash[:errors] = @post.errors.full_messages
+            redirect_to post_url(@post.id)
+        end
     end
 
     private
