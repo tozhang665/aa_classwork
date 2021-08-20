@@ -11,14 +11,15 @@ class PostsController < ApplicationController
     end
 
     def create
-        @post = Post.create(post_params)
-        @post.user_id = current_user.id
-        
-        if @post.save
-            redirect_to post_url(@post.id)
-        else
-            flash.now[:errors] = @post.errors.full_messages
-            render :new
+        post_params[:sub_id].each do |sub_id|
+          @post = Post.create(post_params)
+          @post.sub_id = sub_id
+          if @post.save
+            ps = PostSub.create(post_id:@post.id,sub_id:sub_id)
+            ps.save
+          else
+
+          end
         end
     end
 
@@ -40,7 +41,7 @@ class PostsController < ApplicationController
 
     private
     def post_params
-        params.require(:post).permit(:title, :url, :content, :user_id, :sub_id)
+        params.require(:post).permit(:title, :url, :content, :user_id, sub_id:[])
     end
 
 end
