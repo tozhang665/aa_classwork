@@ -47,5 +47,14 @@ def ensure_session_token
   self.session_token ||= SecureRandom::urlsafe_base64
 end
 
+  has_many :subs,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :Sub
+
+    has_many :posts,
+      primary_key: :id,
+      foreign_key: :user_id,
+      class_name: :Post
 
 end

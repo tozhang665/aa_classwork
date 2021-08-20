@@ -1,0 +1,18 @@
+<h3> <%= @sub.title %> </h3>
+
+<h4>Description</h4>
+
+<%= @sub.description %>
+
+<a href="<%= new_post_url %>">Make New Post!</a>
+
+<% posts = Post.where("sub_id = ?", @sub.id)%>
+<ul>
+    <% posts.each do |post|%>
+        <li><a href="<%=post_url(post)%>"><%=post.title%></a></li>
+        <br>
+    <% end %>
+</ul>
+
+
+<a href="<%=edit_sub_url(@sub.id)%>">Edit</a>
