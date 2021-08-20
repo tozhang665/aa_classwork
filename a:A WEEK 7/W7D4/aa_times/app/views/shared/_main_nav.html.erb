@@ -1,10 +1,10 @@
 <header class="main-nav">
 	<nav class="left-nav">
 		<ul>
-			<li id="sections-sidebar-btn">
-				<i class="fa fa-bars"></i>
-				<span>sections</span>
+			<li id="sections-sidebar-btn"><i class="fa fa-bars"id = "burger-bars"></i>
+        <%= render partial: 'shared/sections_sidebar' %>
 			</li>
+      <li><span>sections</span></li>
 			<li id="search-modal-btn">
 				<i class="fa fa-search"></i>
 				<span>search</span>
@@ -13,9 +13,11 @@
 	</nav>
   <nav class="right-nav">
     <ul>
-    <li><button>Subscribe Now</button></li>
-    <li><button>Log In</button></li>
-    <li><i class="fas fa-cog"></i></li>
+    <li class="right-nav-buttons"><button>Subscribe Now</button></li>
+    <li class="right-nav-buttons"><button>Log In</button></li>
+    <li id = "drop-down"><i class="fas fa-cog"></i>
+      <%= render partial: 'shared/gear_dropdown' %>
+    </li>
     </ul>
     
   </nav>

@@ -1,0 +1,22 @@
+.sections-sidebar{
+  display:none;
+}
+
+.sections-sidebar-ul{
+  display:flex;
+  flex-direction: column;
+}
+
+#sections-sidebar-btn:hover .sections-sidebar{
+  display:block;
+  color:black;
+  font-size:10px;
+  position:fixed;
+}
+#burger-bars:hover .sections-sidebar{
+  display:block;
+  color:black;
+  font-size:10px;
+  position:fixed;
+}
+
