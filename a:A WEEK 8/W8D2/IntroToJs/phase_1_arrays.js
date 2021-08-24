@@ -34,10 +34,18 @@ Array.prototype.transpose = function(){
   //   }
   // }
 
-  
+  for(let i = 0; i < this[0].length; i++){
+    let subarr = [];
+    for(let j = 0; j < this.length; j++){
+      subarr.push(this[j][i]);
+    }
+    arr.push(subarr);
+  }
 
 
   return arr;
 }
 
-console.log([[1,2,3],[4,5,6],[7,8,9]].transpose()) // [[1,4,7],[2,5,8],[3,6,9]]
+console.log([[1,2,3, 10],[4,5,6],[7,8,9]].transpose()) // [[1,4,7],[2,5,8],[3,6,9]]
+
+
