@@ -1,19 +1,16 @@
 Array.prototype.myEach = function(callback) {
-   
     for(let i = 0; i < this.length; i++){
         let el = this[i];
       callback(el);
     }
-    
 }
 
 const doubler = function(el){
-    console.log(el * 2);
+    return el * 2;
 }
 
-let arr = [1,2,3]
+// let arr = [1,2,3]
 // arr.myEach(doubler);
-
 Array.prototype.myMap = function(callback) {
     let newarr = [];
     this.myEach( (el)=> newarr.push(callback(el)))
@@ -23,11 +20,12 @@ Array.prototype.myMap = function(callback) {
 // arr.myMap(doubler)
 
 Array.prototype.myReduce = function(callback, initialValue){
-    if(!initialValue){
-        initialValue = this[0];
-    }
     for(let i = 0; i < this.length; i++){
-        intialValue = callback(initialValue, this[i]);
+        if(initialValue){
+          intialValue = callback(initialValue, this[i]);
+        }else{
+          initialValue = this[0];
+        }  
     }
     return initialValue;
 }
@@ -40,3 +38,12 @@ Array.prototype.myReduce = function(callback, initialValue){
 //   arr.myReduce(function(acc, el) {
 //     return acc + el;
 //   }, 25); // => 31
+
+// Array.prototype.myReduce = function(callback, initialValue){
+//     let values = [...this];
+//     if (!initialValue){
+//       initialValue = values.pop
+//     }
+//     this.myEach((el)=> initialValue = callback(initialValue,el))
+//     return initialValue
+// }
