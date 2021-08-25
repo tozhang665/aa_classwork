@@ -19,7 +19,7 @@ function _makeGrid () {
   grid[3][3] = new Piece("white");
   grid[4][4] = new Piece("white");
 
-  return grid
+  return grid;
 }
 
 /**
@@ -60,12 +60,18 @@ Board.prototype.getPiece = function (pos) {
  * matches a given color.
  */
 Board.prototype.isMine = function (pos, color) {
+  let piece = this.getPiece(pos);
+  if (piece) {
+    return piece.color === color;
+  }
 };
 
 /**
  * Checks if a given position has a piece on it.
  */
 Board.prototype.isOccupied = function (pos) {
+  let piece = this.getPiece(pos);
+  return piece instanceof Piece;
 };
 
 /**
@@ -81,7 +87,19 @@ Board.prototype.isOccupied = function (pos) {
  *
  * Returns empty array if no pieces of the opposite color are found.
  */
-Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip){
+Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip = []){
+  //this.grid, pos,
+  let newPos = []
+  newPos.push(pos[0] + dir[0]);
+  newPos.push(pos[1] + dir[1]);
+  if (!this.isValidPos(newPos) || !(this.grid[newPos[0]][newPos[1]] instanceof Piece)) {
+    return [];
+  }
+  if (this.isMine(newPos, color)){
+    return piecesToFlip;
+  }
+  piecesToFlip.push(newPos);
+  return this._positionsToFlip(newPos, color, dir, piecesToFlip);
 };
 
 /**
@@ -90,6 +108,14 @@ Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip){
  * color being flipped.
  */
 Board.prototype.validMove = function (pos, color) {
+  let flag = false;
+  Board.DIRS.forEach((el) => {
+    let val = this._positionsToFlip(pos, color, el);
+    if (val.length > 0){
+      flag = true;
+    }
+  });
+  return flag;
 };
 
 /**
@@ -99,6 +125,19 @@ Board.prototype.validMove = function (pos, color) {
  * Throws an error if the position represents an invalid move.
  */
 Board.prototype.placePiece = function (pos, color) {
+  if (!this.validMove(pos, color)){
+    throw new Error("Invalid move!");
+  }
+  this.grid[pos[0]][pos[1]] = new Piece(color); 
+  let captured = [];
+  Board.DIRS.forEach(el => {
+    captured = captured.concat(this._positionsToFlip(pos, color, el));
+  });
+  console.log(captured);
+  captured.forEach(el => {
+    
+    this.getPiece(el).flip;
+  });
 };
 
 /**
