@@ -1,0 +1,27 @@
+/* PHASE 2: Thumbs */
+
+.profile-friends{
+  margin-top: 15px;
+  display:grid;
+  /* grid-template-columns: repeat(3,1fr); */
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(3,1fr);
+}
+
+.profile-friends >li >a{
+  display: block;
+}
+
+.thumb{
+  border-radius: 5px;
+  border:solid 1px black;
+  margin:5px;
+}
+
+.thumb:hover:after{
+  content: attr(title);
+  font-size:.9em;
+  color:white;
+  background:black;
+  position: absolute; 
+}
