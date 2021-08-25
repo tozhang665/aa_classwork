@@ -71,7 +71,8 @@ Board.prototype.isMine = function (pos, color) {
  */
 Board.prototype.isOccupied = function (pos) {
   let piece = this.getPiece(pos);
-  return piece instanceof Piece;
+  // console.log(piece instanceof Piece);
+    return piece instanceof Piece;
 };
 
 /**
@@ -133,10 +134,8 @@ Board.prototype.placePiece = function (pos, color) {
   Board.DIRS.forEach(el => {
     captured = captured.concat(this._positionsToFlip(pos, color, el));
   });
-  console.log(captured);
   captured.forEach(el => {
-    
-    this.getPiece(el).flip;
+    this.getPiece(el).flip();
   });
 };
 
@@ -145,12 +144,61 @@ Board.prototype.placePiece = function (pos, color) {
  * the Board for a given color.
  */
 Board.prototype.validMoves = function (color) {
+
+
+  let captured = [];
+
+  // debugger
+
+  // this.grid.forEach((row,idx) =>{
+
+    
+  //   row.forEach((piece,idy) =>{
+    
+  //     console.log(piece);
+  //     let pos = [idx,idy];
+      
+  //     if(!this.isOccupied(pos)){
+
+  //       if(this.validMove(pos,color)){
+
+  //         captured.push(pos);
+
+  //       }
+
+  //     }
+
+  //   })
+  // })
+
+
+  for(let i = 0; i < this.grid.length;i++){
+    for(let j = 0; j < this.grid[0].length;j++){
+      console.log(this.grid[i][j]);
+
+
+      let pos = [i,j];
+      
+      if(!this.isOccupied(pos)){
+
+        if(this.validMove(pos,color)){
+
+          captured.push(pos);
+
+        }
+
+      }
+
+    }
+  }
+  return captured;
 };
 
 /**
  * Checks if there are any valid moves for the given color.
  */
 Board.prototype.hasMove = function (color) {
+  return this.validMoves(color).length > 0
 };
 
 
@@ -160,6 +208,7 @@ Board.prototype.hasMove = function (color) {
  * the black player are out of moves.
  */
 Board.prototype.isOver = function () {
+  return !this.hasMove("white") && !this.hasMove("black")
 };
 
 
@@ -169,6 +218,18 @@ Board.prototype.isOver = function () {
  * Prints a string representation of the Board to the console.
  */
 Board.prototype.print = function () {
+  console.log("  0 1 2 3 4 5 6 7");
+  for(let i = 0;i<this.grid.length;i++){
+    let arr = [i]
+    for(let j = 0; j<this.grid[0].length;j++){
+      if(this.grid[i][j] instanceof Piece){
+        arr.push(this.grid[i][j].toString());
+      }else{
+        arr.push("_");
+      }
+    }
+    console.log(arr.join(" "))
+  }
 };
 
 
