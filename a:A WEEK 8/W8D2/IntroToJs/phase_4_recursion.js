@@ -42,3 +42,28 @@ function exponent2(base, exp){
   }
   return val;
 }
+
+//n = 4
+function fibbonacci(num){
+  // if(n===2){
+  //   return [1,1]
+  // }else if(n === 1){
+  //   return [1]
+  // }else if(n < 1){
+  //   return []
+  // }
+  // let arr=[1,1];
+  // arr.push(fibbonacci(n-1) + fibbonacci(n-2));
+
+  // return arr
+
+  if(num <= 1) return 1;
+
+  let arr = [1,1];
+
+  arr.push(fibbonacci(num-1) + fibbonacci(num-2));
+  return arr
+}
+
+
+
