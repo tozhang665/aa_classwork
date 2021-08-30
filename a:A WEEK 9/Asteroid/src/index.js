@@ -2,35 +2,30 @@
 
 // const MovingObject = require("./moving_object");
 const Asteroid = require("./asteroid");
+const GameView = require("./game_view");
+const Game = require("./game");
 // const Util = require("./utils");
 
 // window.MovingObject = MovingObject;
 window.Asteroid = Asteroid;
 
 
+
 document.addEventListener("DOMContentLoaded",function(){
   const canvasEl = document.getElementById("game-canvas");
-  canvasEl.width = 500;
-  canvasEl.height = 500;
+  canvasEl.width = 1000;
+  canvasEl.height = 1000;
   const ctx = canvasEl.getContext("2d");
+  const game = new Game();
+  console.log(game);
+  // const ast = new Asteroid({
+  //   pos: [300, 400]
+  // });
 
-  // const mo = new MovingObject({
-  // pos: [30, 30],
-  // vel: [10, 10],
-  // radius: 5,
-  // color: "#000000"});
-
-  // // for(let i = 0; i < 10000;i++){
-  //   mo.draw(ctx);
-  //   mo.move();
-  // }
-
-  const ast = new Asteroid({
-    pos: [30, 30]
-  });
-
-  ast.draw(ctx);
-
+  // ast.draw(ctx);
+  const gameview = new GameView(game,ctx).start();
+  // console.log(gameview);
+  // gameview.start();
 })
 // console.log(util);
 // console.log(MovingObject);
