@@ -22,16 +22,16 @@ MovingObject.prototype.move = function(){
 }
 
 MovingObject.prototype.isCollidedWith = function(otherObject){
-  let difference = [this.pos[0] - otherObject.pos[0],this.pos[1] - otherObject.pos[1]];
+  // let difference = [this.pos[0] - otherObject.pos[0],this.pos[1] - otherObject.pos[1]];
 
-  let hyp = Math.sqrt((difference[0]**2) + (difference[1] **2));
-  let radSum = this.radius + otherObject.radius;
+  // let hyp = Math.sqrt((difference[0]**2) + (difference[1] **2));
+  // let radSum = this.radius + otherObject.radius;
 
-  if(radSum >= hyp){
-    return true;
-  }else{
-    return false;
-  }
+  // if(radSum >= hyp){
+  //   return true;
+  // }else{
+  //   return false;
+  // }
 
 }
 
