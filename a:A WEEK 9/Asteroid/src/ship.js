@@ -1,5 +1,5 @@
 const MovingObject = require("./moving_object");
-const Game = require("./game");
+
 const Util = require("./utils");
 
 function Ship(options) {
@@ -10,11 +10,13 @@ function Ship(options) {
     MovingObject.call(this, options);
 }
 
+Util.inherits(Ship, MovingObject);
+
 Ship.prototype.relocate = function(){
-    this.pos = Game.prototype.randomPosition();
+    this.pos = this.game.randomPosition();
     this.vel = Util.randomVec(0);
 }
 
-Util.inherits(Ship, MovingObject);
+
 
 module.exports = Ship;

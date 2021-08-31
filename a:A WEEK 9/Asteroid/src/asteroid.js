@@ -8,9 +8,10 @@ function Asteroid(options) {
     options.vel = Util.randomVec(1);
     MovingObject.call(this, options);
 }
+Util.inherits(Asteroid, MovingObject);
 
 Asteroid.prototype.isCollidedWith = function(otherObject) {
-    if (otherObject instanceof Ship) {
+    // if (otherObject instanceof Ship) {
         let difference = [this.pos[0] - otherObject.pos[0], this.pos[1] - otherObject.pos[1]];
 
         let hyp = Math.sqrt((difference[0]**2) + (difference[1] **2));
@@ -19,11 +20,11 @@ Asteroid.prototype.isCollidedWith = function(otherObject) {
         if (radSum >= hyp) {
             return true;
         } else {
-            return false;
+          return false;
         }
-    }
+    // }
 }
 
-Util.inherits(Asteroid, MovingObject);
+
 
 module.exports = Asteroid;
