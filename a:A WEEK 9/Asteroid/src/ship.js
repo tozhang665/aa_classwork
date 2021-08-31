@@ -17,6 +17,9 @@ Ship.prototype.relocate = function(){
     this.vel = Util.randomVec(0);
 }
 
-
+Ship.prototype.power = function(arr){
+  this.vel[0] = this.vel[0] + arr[0];
+  this.vel[1] = this.vel[1] + arr[1];
+}
 
 module.exports = Ship;
