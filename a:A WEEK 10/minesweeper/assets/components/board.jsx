@@ -1,13 +1,13 @@
 import React from "react";
 import * as Minesweeper from "../../minesweeper";
+import Tile from "./tile.jsx"
 
 
 class Board extends React.Component{
   constructor(props){
     super(props)
-
     this.state = {
-      boardOBJ: new Minesweeper.Board(9,2)
+      boardClass: this.props.board
     }
   }
 
@@ -15,12 +15,16 @@ class Board extends React.Component{
   render(){
     return(
     <div>
-      {this.props.board.map((ele,idx) =>{
-        <div key={idx}>
-          {ele.map((innerELE,idx2)=>{
-            <Tile tileobj={innerELE} updateGame={this.props.updateGame} key={idx2}/>
-          })}
-        </div>
+      {this.state.boardClass.grid.map((row,idx) =>{
+        return(
+          <div key={idx}>
+            {row.map((ele,idx2)=>{
+              return(
+                <Tile tileobj = {ele}  updateGame = {this.props.updateGame} key={idx2}/>
+              )
+            })}
+          </div>
+        )
       })}
     </div>
     )
@@ -28,3 +32,4 @@ class Board extends React.Component{
 }
 
 
+export default Board
