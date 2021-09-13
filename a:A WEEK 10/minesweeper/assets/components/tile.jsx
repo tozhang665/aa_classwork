@@ -37,13 +37,13 @@ class Tile extends React.Component{
 
   render(){
     let sym = this.grabSYM();
-    let className = "tile";
-    if(this.state.tileOBJ.revealed){
-      className = "tile revealed";
+    let className = "";
+    if(this.state.tileOBJ.explored){
+      className = "revealed";
     }
     return(
-      <div className={className}>
-        <button onClick={this.handleClick}>{sym}</button>
+      <div className="tile">
+        <button className={className} onClick={this.handleClick}>{sym}</button>
       </div>
     )
   }

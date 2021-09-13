@@ -141,13 +141,30 @@ var Game = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       objBoard: new _minesweeper__WEBPACK_IMPORTED_MODULE_1__.Board(9, 10),
-      gameOver: false
+      gameOver: "false"
     };
     _this.updateGame = _this.updateGame.bind(_assertThisInitialized(_this));
+    _this.restartGame = _this.restartGame.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Game, [{
+    key: "restartGame",
+    value: function restartGame() {
+      var _this2 = this;
+
+      this.setState({
+        objBoard: new _minesweeper__WEBPACK_IMPORTED_MODULE_1__.Board(20, 10),
+        gameOver: "false"
+      }, function () {
+        console.log("new Game");
+        console.log(_this2.state.objBoard);
+        console.log(_this2.state.gameOver);
+
+        _this2.render();
+      });
+    }
+  }, {
     key: "updateGame",
     value: function updateGame(tile, bool) {
       if (bool) {
@@ -163,28 +180,29 @@ var Game = /*#__PURE__*/function (_React$Component) {
 
       if (this.state.objBoard.lost()) {
         this.setState({
-          gameOver: 'lost'
+          gameOver: 'you have lost'
         });
       } else if (this.state.objBoard.won()) {
         this.setState({
-          gameOver: 'won'
+          gameOver: 'you have won'
         });
       }
     }
   }, {
     key: "render",
     value: function render() {
-      if (this.state.gameOver === false) {
+      if (this.state.gameOver === "false") {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_board_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
           board: this.state.objBoard,
           updateGame: this.updateGame
         }));
       } else {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_board_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_modal_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          string: this.state.gameOver,
+          restart: this.restartGame
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_board_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
           board: this.state.objBoard,
           updateGame: this.updateGame
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_modal_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          string: this.state.gameOver
         }));
       }
     }
@@ -211,7 +229,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Modal(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, props.string);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "modal"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "modal-text"
+  }, props.string, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    onClick: props.restart
+  }, "restart")));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Modal);
@@ -304,15 +328,16 @@ var Tile = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var sym = this.grabSYM();
-      var className = "tile";
+      var className = "";
 
-      if (this.state.tileOBJ.revealed) {
-        className = "tile revealed";
+      if (this.state.tileOBJ.explored) {
+        className = "revealed";
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: className
+        className: "tile"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: className,
         onClick: this.handleClick
       }, sym));
     }

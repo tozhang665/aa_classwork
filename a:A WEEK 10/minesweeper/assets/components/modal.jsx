@@ -1,7 +1,16 @@
 import React from "react";
 
 function Modal(props){
-  return(<h1>{props.string}</h1>)
-}
+  return(
+  <div className="modal">
+  <div className="modal-text">
+    {props.string}
+    <br />
+    <button onClick={props.restart}>
+      restart
+    </button>
+  </div>
+  </div>
+  )}
 
 export default Modal;
