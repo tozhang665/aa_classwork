@@ -1,0 +1,19 @@
+.row {
+  display: flex;
+}
+
+.tile {
+  width:30px;
+  height:30px;
+  border-style: inset;
+  border-style: outset;
+}
+
+button{
+  width: 30px;
+  height: 30px;
+}
+
+.revealed > button{
+  background-color: blue;
+}
