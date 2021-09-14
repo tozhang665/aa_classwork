@@ -7,7 +7,7 @@ class Game extends React.Component{
   constructor(props){
     super(props)
     this.state= {
-      objBoard: new Minesweeper.Board(9,10),
+      objBoard: new Minesweeper.Board(20,1),
       gameOver: "false"
     }
     this.updateGame = this.updateGame.bind(this)
@@ -16,7 +16,7 @@ class Game extends React.Component{
 
 
   restartGame(){
-    this.setState({objBoard: new Minesweeper.Board(20,10) , gameOver: "false"}, ()=>{
+    this.setState({objBoard: new Minesweeper.Board(20,1) , gameOver: "false"}, ()=>{
       console.log("new Game")
       console.log(this.state.objBoard);
       console.log(this.state.gameOver);
