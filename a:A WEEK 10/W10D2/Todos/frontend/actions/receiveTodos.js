@@ -1,4 +1,4 @@
-import {RECEIVE_TODOS, RECEIVE_TODO} from "./todo_actions"
+import {RECEIVE_TODOS, RECEIVE_TODO,REMOVE_TODO} from "./todo_actions"
 
 export const receiveTodos = (todos) => {
   return {
@@ -13,5 +13,13 @@ export const receiveTodo = (todo) =>{
     type: RECEIVE_TODO,
     todo
   }
+}
 
+
+
+export const removeTodo = (todo) =>{
+  return{
+    type: REMOVE_TODO,
+    todo
+  }
 }
