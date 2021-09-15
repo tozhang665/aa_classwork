@@ -5,18 +5,19 @@ class todoListItem extends React.Component{
   constructor(props){
     super(props)
   }
-
   render(){
     return(
       <ul>
-        ID: {this.props.obj.id}
-        <br />
-        TITLE: {this.props.obj.title} 
-        <br />
-        BODY: {this.props.obj.body}
+        TITLE: {this.props.obj.title}
         <br />
         DONE: {this.props.obj.done.toString()}
         <br />
+        <button onClick={() => {
+          this.props.obj.done = !(this.props.obj.done);
+          console.log(this.props.obj.done)
+          this.props.receiveTodo(this.props.obj)
+        }}>Done
+        </button>
       </ul>
     )
   }

@@ -368,14 +368,18 @@ var TodoList = /*#__PURE__*/function (_React$Component) {
   _createClass(TodoList, [{
     key: "render",
     value: function render() {
-      console.log(this.props.todos);
+      var _this = this;
+
+      console.log(this.props.removeTodo);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "todoList"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.props.todos.map(function (ele, idx) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
           key: idx
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_list_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          obj: ele
+          obj: ele,
+          receiveTodo: _this.props.receiveTodo,
+          removeTodo: _this.props.removeTodo
         }));
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
         receiveTodo: this.props.receiveTodo
@@ -410,6 +414,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var mapStateToProps = function mapStateToProps(state) {
   return {
     todos: (0,_reducers_selectors__WEBPACK_IMPORTED_MODULE_2__.allTodos)(state)
@@ -420,6 +425,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     receiveTodo: function receiveTodo(todo) {
       return dispatch((0,_actions_receiveTodos__WEBPACK_IMPORTED_MODULE_1__.receiveTodo)(todo));
+    },
+    removeTodo: function removeTodo(todo) {
+      return dispatch((0,_actions_receiveTodos__WEBPACK_IMPORTED_MODULE_1__.removeTodo)(todo));
     }
   };
 };
@@ -478,7 +486,16 @@ var todoListItem = /*#__PURE__*/function (_React$Component) {
   _createClass(todoListItem, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, "ID: ", this.props.obj.id, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), "TITLE: ", this.props.obj.title, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), "BODY: ", this.props.obj.body, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), "DONE: ", this.props.obj.done.toString(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null));
+      var _this = this;
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, "TITLE: ", this.props.obj.title, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), "DONE: ", this.props.obj.done.toString(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: function onClick() {
+          _this.props.obj.done = !_this.props.obj.done;
+          console.log(_this.props.obj.done);
+
+          _this.props.receiveTodo(_this.props.obj);
+        }
+      }, "Done"));
     }
   }]);
 
