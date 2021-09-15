@@ -3,6 +3,9 @@ import ReactDOM from "react-dom";
 import configureStore from "./store/store.js"
 import {receiveTodos, receiveTodo,removeTodo} from "./actions/receiveTodos.js"
 import {receiveSteps, receiveStep,removeStep} from "./actions/receiveSteps.js"
+import { allTodos } from "./reducers/selectors.js";
+import App from "./components/app"
+import Root from "./components/root"
 
 
 document.addEventListener("DOMContentLoaded",()=>{
@@ -14,7 +17,9 @@ document.addEventListener("DOMContentLoaded",()=>{
   window.receiveTodos = receiveTodos;
   window.removeTodo = removeTodo;
   
+  window.allTodos = allTodos;
   
+
   window.receiveStep = receiveStep;
   window.receiveSteps = receiveSteps;
   window.removeStep = removeStep;
@@ -23,5 +28,11 @@ document.addEventListener("DOMContentLoaded",()=>{
   console.log("added")
 
   const root = document.getElementById("root")
-  ReactDOM.render(<h1>Todos App</h1>,root);
+
+
+
+  ReactDOM.render(<Root store={store}/>,root);
+
+
+
 })
