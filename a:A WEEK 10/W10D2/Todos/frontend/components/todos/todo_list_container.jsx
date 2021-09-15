@@ -4,13 +4,17 @@ import { allTodos } from "../../reducers/selectors";
 import todo_list from "./todo_list";
 
 
-const mapStateToProps = (state)=>({
-    todos: allTodos(state)
-  })
+const mapStateToProps = (state)=>{
+   return{
+     todos: allTodos(state)
+   }
+}
 
-const mapDispatchToProps = (dispatch) =>({
-  receiveTodo: todo => dispatch(receiveTodo(todo))
-})
+const mapDispatchToProps = (dispatch) =>{
+  return {
+    receiveTodo: (todo) => dispatch(receiveTodo(todo))
+  }
+}
 
 
 export default connect(mapStateToProps,mapDispatchToProps)(todo_list)

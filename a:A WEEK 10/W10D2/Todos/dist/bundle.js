@@ -203,6 +203,117 @@ var Root = function Root(_ref) {
 
 /***/ }),
 
+/***/ "./frontend/components/todos/todo_form.jsx":
+/*!*************************************************!*\
+  !*** ./frontend/components/todos/todo_form.jsx ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var TodoForm = /*#__PURE__*/function (_React$Component) {
+  _inherits(TodoForm, _React$Component);
+
+  var _super = _createSuper(TodoForm);
+
+  function TodoForm(props) {
+    var _this;
+
+    _classCallCheck(this, TodoForm);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      id: Math.floor(Math.random() * 1000),
+      title: "",
+      body: "",
+      done: false
+    };
+    _this.updateTitle = _this.updateTitle.bind(_assertThisInitialized(_this));
+    _this.updateBody = _this.updateBody.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    console.log(_this.props);
+    return _this;
+  }
+
+  _createClass(TodoForm, [{
+    key: "updateTitle",
+    value: function updateTitle(e) {
+      // console.log(e.target.value);
+      this.setState({
+        title: e.target.value
+      });
+    }
+  }, {
+    key: "updateBody",
+    value: function updateBody(e) {
+      // console.log(e.target.value);
+      this.setState({
+        body: e.target.value
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault(); // console.log(this.props);
+
+      this.props.receiveTodo(this.state);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      // console.log(this.props)
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+        onSubmit: this.handleSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Title:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "text",
+        value: this.state.title,
+        onChange: this.updateTitle
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Body:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "text",
+        value: this.state.body,
+        onChange: this.updateBody
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "submit",
+        value: "add todo"
+      }));
+    }
+  }]);
+
+  return TodoForm;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TodoForm);
+
+/***/ }),
+
 /***/ "./frontend/components/todos/todo_list.jsx":
 /*!*************************************************!*\
   !*** ./frontend/components/todos/todo_list.jsx ***!
@@ -216,6 +327,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _todo_list_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todo_list_item */ "./frontend/components/todos/todo_list_item.jsx");
+/* harmony import */ var _todo_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./todo_form */ "./frontend/components/todos/todo_form.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -241,6 +353,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var TodoList = /*#__PURE__*/function (_React$Component) {
   _inherits(TodoList, _React$Component);
 
@@ -256,12 +369,16 @@ var TodoList = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       console.log(this.props.todos);
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.props.todos.map(function (ele, idx) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "todoList"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.props.todos.map(function (ele, idx) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
           key: idx
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_list_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           obj: ele
         }));
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_todo_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        receiveTodo: this.props.receiveTodo
       }));
     }
   }]);
@@ -428,25 +545,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _actions_step_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/step_actions */ "./frontend/actions/step_actions.js");
 
-var initialState = {
-  1: {
-    // this is the step with id = 1
-    id: 1,
-    title: 'walk to store',
-    done: false,
-    todo_id: 1
-  },
-  2: {
-    // this is the step with id = 2
-    id: 2,
-    title: 'buy soap',
-    done: false,
-    todo_id: 1
-  }
-};
 
 var stepsReducer = function stepsReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state); // const newNewState = Object.assign({}, state);
 
@@ -495,23 +596,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _actions_todo_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/todo_actions */ "./frontend/actions/todo_actions.js");
 
-var initialState = {
-  1: {
-    id: 1,
-    title: "wash car",
-    body: "with soap",
-    done: false
-  },
-  2: {
-    id: 2,
-    title: "wash dog",
-    body: "with shampoo",
-    done: true
-  }
-};
 
 var todosReducer = function todosReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state); // const newNewState = Object.assign({}, state);
 
@@ -34167,9 +34254,55 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+ // const initialState = {
+//   1: { // this is the step with id = 1
+//     id: 1,
+//     title: 'walk to store',
+//     done: false,
+//     todo_id: 1
+//   },
+//   2: { // this is the step with id = 2
+//     id: 2,
+//     title: 'buy soap',
+//     done: false,
+//     todo_id: 1
+//   }
+// }
 
 document.addEventListener("DOMContentLoaded", function () {
-  var store = (0,_store_store_js__WEBPACK_IMPORTED_MODULE_2__["default"])();
+  var initialState = {
+    todos: {
+      1: {
+        id: 1,
+        title: "wash car",
+        body: "with soap",
+        done: false
+      },
+      2: {
+        id: 2,
+        title: "wash dog",
+        body: "with shampoo",
+        done: true
+      }
+    },
+    steps: {
+      1: {
+        // this is the step with id = 1
+        id: 1,
+        title: 'walk to store',
+        done: false,
+        todo_id: 1
+      },
+      2: {
+        // this is the step with id = 2
+        id: 2,
+        title: 'buy soap',
+        done: false,
+        todo_id: 1
+      }
+    }
+  };
+  var store = (0,_store_store_js__WEBPACK_IMPORTED_MODULE_2__["default"])(initialState);
   store.configureStore = _store_store_js__WEBPACK_IMPORTED_MODULE_2__["default"];
   window.store = store;
   window.receiveTodo = _actions_receiveTodos_js__WEBPACK_IMPORTED_MODULE_3__.receiveTodo;
