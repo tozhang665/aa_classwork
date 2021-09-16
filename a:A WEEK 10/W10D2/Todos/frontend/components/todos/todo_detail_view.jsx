@@ -8,7 +8,10 @@ class TodoDetailView extends React.Component {
   render() {
     return(
       <div>
-        hi
+        <div>
+        BODY: {this.props.obj.body}
+        </div>
+        <br />
         <button onClick= {() => {
           this.props.removeTodo(this.props.obj)
           }}>Remove Todo
@@ -17,3 +20,5 @@ class TodoDetailView extends React.Component {
     )
   }
 }
+
+export default TodoDetailView;
