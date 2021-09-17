@@ -492,6 +492,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var mapStateToProps = function mapStateToProps(state) {
   return {
     todos: (0,_reducers_selectors__WEBPACK_IMPORTED_MODULE_2__.allTodos)(state)
@@ -507,7 +508,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       return dispatch((0,_actions_receiveTodos__WEBPACK_IMPORTED_MODULE_1__.removeTodo)(todo));
     },
     receiveTodos: function receiveTodos() {
-      return dispatch(fetchTodos());
+      return dispatch((0,_actions_receiveTodos__WEBPACK_IMPORTED_MODULE_1__.fetchTodos)());
     }
   };
 };

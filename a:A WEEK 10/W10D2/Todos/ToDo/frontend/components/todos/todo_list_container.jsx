@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { receiveTodo } from "../../actions/receiveTodos";
 import { removeTodo } from "../../actions/receiveTodos";
+import { fetchTodos } from "../../actions/receiveTodos";
 import { allTodos } from "../../reducers/selectors";
 import todo_list from "./todo_list";
 
