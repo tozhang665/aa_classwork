@@ -5,7 +5,8 @@ import logger from 'redux-logger';
 import myMiddleware from '../middleware/thunk.js';
 
 const configureStore = (preloadedState = {}) =>{
-  return createStore(rootReducer, preloadedState, applyMiddleware(myMiddleware, logger));
+  // return createStore(rootReducer, preloadedState, applyMiddleware(myMiddleware, logger));
+  return createStore(rootReducer, preloadedState, applyMiddleware(thunk, logger));
 }
 
 export default configureStore;
