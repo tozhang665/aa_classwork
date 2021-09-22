@@ -9,11 +9,6 @@ export const newSession = (user) => ({
 
 
 
-
-
-
-
-
 export const createSession = user => dispatch => (
   loginUser(user).then( data => dispatch(newSession(data)))
 );

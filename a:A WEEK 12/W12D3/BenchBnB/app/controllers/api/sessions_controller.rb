@@ -18,6 +18,7 @@ class Api::SessionsController < ApplicationController
       # puts "HELLLOOOO"
       # puts current_user.username
       # puts "BYEEEEEE"
+      redirect_to api_user_url(@user)
     else
       # render :new
       flash[:errors] = ['Access Denied, Invalid Credentials']

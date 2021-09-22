@@ -20,9 +20,6 @@
   </head>
 
   <body>
-    <% if current_user %>
-      <h1>hello <%= current_user.username %></h1>
-    <% end %>
     <%= yield %>
   </body>
 </html>
