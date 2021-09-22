@@ -13,13 +13,13 @@ class welcomeBar extends React.Component{
           <h1>BenchBnB</h1>
           <h4>Welcome { this.props.user.username }!</h4>
 
-          <Link>LogOut</Link>
         </header>
       )
     }else{
       return(
         <header className="nav-bar">
           <h1>BenchBnB</h1>
+          <Link to="/login">Login</Link>
         </header>
       )
     }
