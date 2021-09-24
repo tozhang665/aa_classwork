@@ -20,3 +20,13 @@ user3.save!
 user4.save!
 user5.save!
 user6.save!
+
+
+bench1 = Bench.new({lat:37.77150,lng:-122.46865,description:"deYoung Museum"})
+bench2 = Bench.new({lat:37.75979,lng:-122.42669,description:"deYoung Museum"})
+bench3 = Bench.new({lat:37.79875,lng:-122.40126,description:"deYoung Museum"})
+
+
+bench1.save!
+bench2.save!
+bench3.save!
